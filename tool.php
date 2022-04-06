@@ -20,15 +20,23 @@ echo "
 echo "[SITE*]: ";
 $stdinsite = fopen ("php://stdin","r");
 $site = fgets($stdinsite);
+
 echo "[GRAVAR RESULTADOS EM *]: ";
 $stdingravar = fopen ("php://stdin","r");
 $gravar = fgets($stdingravar);
 
-$words = explode("\n", file_get_contents('./wordlist.txt'));
-$i=0;
+echo "[ALTURA DO WORDLIST *]: ";
+$stdinaltura = fopen ("php://stdin","r");
+$altura = filter_var(str_replace(["\n","\r"],'',fgets($stdingravar)), FILTER_SANITIZE_NUMBER_INT);
 
-foreach($words as $word) {
-    $payload = filter_var($site.'/'.$word, FILTER_SANITIZE_URL);
+if(is_numeric($altura) == false){
+    echo "\e[31m A ALTURA DA WORDLIST DEVE SER UM NUMERO\033[0m";
+    exit();
+}
+
+$words = explode("\n", file_get_contents('./wordlist.txt'));
+for($i=$altura; $i < count($words); ) { 
+    $payload = filter_var($site.'/'.$words[$i], FILTER_SANITIZE_URL);
     $ch = curl_init();
     $options = array(
         CURLOPT_URL            => $payload,
@@ -57,5 +65,6 @@ foreach($words as $word) {
         echo "\e[31m[$i] SIZE [".$httpCode['size_download']."] ".$httpCode['http_code']." => ".$payload."\033[0m\n";
     }
 
-    $i++;
+    $i++;    
 }
+
