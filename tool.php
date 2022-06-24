@@ -17,17 +17,10 @@ echo "
  ########::'####: ##:::. ##::: ##:::::::'####: ##::. ##: ########:: ########: ##:::. ##:::. ######:: ###: ##::. ##:
 ........:::....::..:::::..::::..::::::::....::..::::..::........:::........::..:::::..:::::......:::...::..::::..::\033[0m
 ::::::::::::::::::::::::::::::::::::::::::::::::BY JOHN KAI$3R:::::::::::::::::::::::::::::::::::::::::::::::::::::\n";
-echo "[SITE*]: ";
-$stdinsite = fopen ("php://stdin","r");
-$site = fgets($stdinsite);
 
-echo "[GRAVAR RESULTADOS EM *]: ";
-$stdingravar = fopen ("php://stdin","r");
-$gravar = fgets($stdingravar);
-
-echo "[ALTURA DO WORDLIST *]: ";
-$stdinaltura = fopen ("php://stdin","r");
-$altura = filter_var(str_replace(["\n","\r"],'',fgets($stdingravar)), FILTER_SANITIZE_NUMBER_INT);
+$site = readline("[SITE*]: ");
+$gravar = readline("[GRAVAR RESULTADOS EM *]: ");
+$altura = readline("[ALTURA DO WORDLIST *]: ");
 
 if(is_numeric($altura) == false){
     echo "\e[31m A ALTURA DA WORDLIST DEVE SER UM NUMERO\033[0m";

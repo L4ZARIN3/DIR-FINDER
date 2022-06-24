@@ -1,4 +1,5 @@
 elmah.axd
+info.php
 phpinfo.php
 phpinfo.php3
 phpinfo.php4
@@ -6028,7 +6029,6 @@ influxdb/
 info
 info.%EXT%
 info.json
-info.php
 info.txt
 infophp.php
 infor
