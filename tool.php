@@ -1,7 +1,7 @@
 <?php
 
 function gravar($nome, $texto){
-	$arquivo = str_replace(["\n","\r"],'',$nome.".txt");
+	$arquivo = $nome.".txt";
 	$fp = fopen($arquivo, "a+");
 	fwrite($fp, $texto);
 	fclose($fp);
