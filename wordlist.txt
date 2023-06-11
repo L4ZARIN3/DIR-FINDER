@@ -1,3 +1,4 @@
+.git
 search
 search/about
 search/static
@@ -9869,7 +9870,6 @@ filtro
 .ghci
 .gho
 .gif
-.git
 .git-credentials
 .git-rewrite/
 .git.json
